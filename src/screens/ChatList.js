@@ -1,7 +1,8 @@
-import { View, FlatList, StyleSheet } from 'react-native';
-import ChatListItem from '../components/ChatListItem';
-import Header from '../components/Header';
-import chats from '../../assets/data/chats.json';
+import { View, FlatList, StyleSheet } from "react-native";
+import ChatListItem from "../components/ChatListItem";
+import Header from "../components/Header";
+import Contacts from "../components/Contacts";
+import chats from "../../assets/data/chats.json";
 
 const ChatListScreen = () => {
   return (
@@ -12,6 +13,7 @@ const ChatListScreen = () => {
         renderItem={({ item }) => <ChatListItem chat={item} />}
         style={styles.chatListTopAndBottom}
       />
+      <Contacts />
     </View>
   );
 };
