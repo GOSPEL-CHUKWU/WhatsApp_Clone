@@ -1,8 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import ChatListScreen from "./src/screens/ChatList";
-import * as Font from "expo-font";
-import { useEffect } from "react";
+import ChatScreen from "./src/screens/ChatScreen";
+// import * as Font from "expo-font";
+// import { useEffect } from "react";
 
 export default function App() {
   // useEffect(()=>{
@@ -17,7 +18,8 @@ export default function App() {
   
   return (
     <View style={styles.container}>
-      <ChatListScreen />
+      {/* <ChatListScreen /> */}
+      <ChatScreen/>
       <StatusBar style="light" />
     </View>
   );
@@ -29,6 +31,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#15151c",
     // alignItems: 'center',
     // justifyContent: 'center',
-    paddingBottom: 85,
   },
 });

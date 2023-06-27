@@ -23,7 +23,7 @@ const index = ({ chat }) => {
           </Text>
         </View>
 
-        <Text numberOfLines={1} style={styles.subTitle}>
+        <Text numberOfLines={1} style={[styles.subTitle,styles.text]}>
           {chat.lastMessage.text}
         </Text>
       </View>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 15,
     marginVertical: 10,
-
+    gap:7,
     height: 60,
   },
   image: {
@@ -49,22 +49,26 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#3f403f',
+    // borderBottomWidth: StyleSheet.hairlineWidth,
+    // borderBottomColor: '#3f403f',
+        marginTop: 5,
   },
   row: {
     flexDirection: 'row',
     marginBottom: 5,
+
   },
   name: {
     flex: 1,
     fontWeight: 'bold',
-    color: 'gray',
+    color: '#dce3e3',
   },
   subTitle: {
     color: 'gray',
   },
+  text:{
+    width:300
+  }
 });
 
 export default index;

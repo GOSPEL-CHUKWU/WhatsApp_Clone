@@ -13,7 +13,7 @@ const index = () => {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    bottom: 80,
+    bottom: 20,
     right: 15,
     backgroundColor: "#0e9669",
     padding:15,

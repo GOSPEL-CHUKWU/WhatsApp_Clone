@@ -17,7 +17,7 @@ const index = () => {
             <FontAwesomeIcon
               icon={faCamera}
               style={[styles.icon, styles.camera]}
-              size={19}
+              size={22}
             />
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
@@ -28,6 +28,7 @@ const index = () => {
               icon={faEllipsisVertical}
               style={styles.icon}
               size={18}
+
             />
           </View>
         </View>
@@ -61,42 +62,42 @@ const index = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#16161D",
-    borderBottomColor: "#0e9669 ",
-    borderBottomWidth: 2,
+    backgroundColor: '#16161D',
+    // borderBottomColor: "#0e9669 ",
+    // borderBottomWidth: 2,
   },
   column: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   icon: {
-    color: "gray",
+    color: 'gray',
   },
   header: {
     marginHorizontal: 18,
     marginVertical: 29,
     marginTop: 45,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
 
     // backgroundColor:'blue'
   },
   headerText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 27,
-    color: "gray",
+    color: 'gray',
     flex: 2,
     // fontFamily: "Helvetica",
   },
   headerIcons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     flex: 1,
     marginTop: 4,
   },
   camera: {},
   row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginHorizontal: 20,
     marginTop: 10,
     // backgroundColor: "orange",
@@ -108,26 +109,27 @@ const styles = StyleSheet.create({
     marginLeft: -5,
   },
   chats: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginLeft: -27,
   },
   active: {
-    borderBottomColor: "#0e9669",
+    borderBottomColor: '#0e9669',
     borderBottomWidth: 2.3,
     borderRadius: 1,
+    color: '#0e9669',
   },
   unread: {
     fontSize: 13,
-    backgroundColor: "#3a8c63",
+    backgroundColor: '#3a8c63',
     height: 18,
     width: 18,
     borderRadius: 9,
-    textAlign: "center",
+    textAlign: 'center',
     paddingTop: 1,
     paddingRight: 1.2,
     marginTop: 2,
     marginRight: 23,
-    color: "#16161D",
+    color: '#16161D',
   },
   status: {
     paddingRight: 10,
@@ -142,7 +144,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     paddingBottom: 13,
     paddingLeft: 20,
-    color: "gray",
+    color: 'gray',
     // backgroundColor: "yellow",
   },
 });

@@ -1,27 +1,33 @@
-import { View, FlatList, StyleSheet } from "react-native";
-import ChatListItem from "../components/ChatListItem";
-import Header from "../components/Header";
-import Contacts from "../components/Contacts";
-import chats from "../../assets/data/chats.json";
+import { View, FlatList, StyleSheet, ScrollView } from 'react-native';
+import ChatListItem from '../components/ChatListItem';
+import Header from '../components/Header';
+import Contacts from '../components/Contacts';
+import chats from '../../assets/data/chats.json';
 
 const ChatListScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
-      <FlatList
-        data={chats}
-        renderItem={({ item }) => <ChatListItem chat={item} />}
-        style={styles.chatListTopAndBottom}
-      />
+      <ScrollView>
+        <FlatList
+          data={chats}
+          renderItem={({ item }) => <ChatListItem chat={item} />}
+          style={styles.chatListTopAndBottom}
+        />
+      </ScrollView>
       <Contacts />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  chatListTopAndBottom: {
-    marginBottom: 60,
+  container:{
+    // paddingBottom: 140,
+    height:'100%'
   },
+  // chatListTopAndBottom: {
+  //   marginBottom:80,
+  // },
 });
 
 export default ChatListScreen;
