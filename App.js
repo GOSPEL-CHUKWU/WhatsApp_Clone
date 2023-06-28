@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
-import ChatListScreen from "./src/screens/ChatList";
-import ChatScreen from "./src/screens/ChatScreen";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native';
+import ChatListScreen from './src/screens/ChatList';
+import ChatScreen from './src/screens/ChatScreen';
 // import * as Font from "expo-font";
 // import { useEffect } from "react";
 
@@ -15,7 +15,7 @@ export default function App() {
   //   }
   //   loadFont()
   // },[])
-  
+
   return (
     <View style={styles.container}>
       {/* <ChatListScreen /> */}
@@ -28,7 +28,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#15151c",
+    backgroundColor: '#15151c',
     // alignItems: 'center',
     // justifyContent: 'center',
   },

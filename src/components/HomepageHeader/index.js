@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { View, Text, StyleSheet } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faCamera,
   faEllipsisVertical,
   faMagnifyingGlass,
-  faUserGroup,
-} from "@fortawesome/free-solid-svg-icons";
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
 
 const index = () => {
   return (
@@ -28,32 +28,23 @@ const index = () => {
               icon={faEllipsisVertical}
               style={styles.icon}
               size={18}
-
             />
           </View>
         </View>
         <View style={styles.row}>
           <FontAwesomeIcon
-            icon={faUserGroup}
+            icon={faUsers}
             style={[styles.icon, styles.group]}
-            size={18}
+            size={23}
           />
           <View style={[styles.chats, styles.active]}>
-            <Text style={[styles.subHeader, { fontWeight: "700" }]}>
-              Chats{" "}
+            <Text style={[styles.subHeader, { fontWeight: '700' }]}>
+              Chats{' '}
             </Text>
             <Text style={styles.unread}>4</Text>
           </View>
-          <Text
-            style={[styles.subHeader, styles.status]}
-          >
-            Status
-          </Text>
-          <Text
-            style={[styles.subHeader, styles.calls]}
-          >
-            Calls
-          </Text>
+          <Text style={[styles.subHeader, styles.status]}>Status</Text>
+          <Text style={[styles.subHeader, styles.calls]}>Calls</Text>
         </View>
       </View>
     </View>
