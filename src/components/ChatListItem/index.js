@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 
-const index = ({ chat }) => {
+const ChatListItem = ({ chat }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -71,4 +71,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default index;
+export default ChatListItem;

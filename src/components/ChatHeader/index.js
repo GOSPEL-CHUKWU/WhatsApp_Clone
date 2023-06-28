@@ -7,7 +7,7 @@ import {
   faVideo,
 } from '@fortawesome/free-solid-svg-icons';
 
-const index = () => {
+const ChatHeader = () => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default index;
+export default ChatHeader;

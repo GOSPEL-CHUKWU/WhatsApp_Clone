@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import ChatListScreen from './src/screens/ChatList';
 import ChatScreen from './src/screens/ChatScreen';
 // import * as Font from "expo-font";
@@ -19,7 +19,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <ChatListScreen /> */}
-      <ChatScreen/>
+      <ChatScreen />
       <StatusBar style="light" />
     </View>
   );

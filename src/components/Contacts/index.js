@@ -2,7 +2,7 @@ import { View, StyleSheet } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSquarePollHorizontal } from "@fortawesome/free-solid-svg-icons";
 
-const index = () => {
+const Contacts = () => {
   return (
     <View style={styles.container}>
       <FontAwesomeIcon icon={faSquarePollHorizontal} style={styles.contacts} size={24} />
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default index;
+export default Contacts;

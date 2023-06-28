@@ -7,7 +7,7 @@ import {
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 
-const index = () => {
+const HomepageHeader = () => {
   return (
     <View style={styles.container}>
       <View style={styles.column}>
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default index;
+export default HomepageHeader;
