@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable,TouchableOpacity} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import {
   faArrowLeft,
   faEllipsisVertical,
@@ -8,23 +9,28 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const ChatHeader = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.left}>
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            style={[styles.icon, styles.arrow]}
-            size={20}
-          />
-          <Image
-            source={{
-              uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/lukas.jpeg',
-            }}
-            style={styles.image}
-          />
+          <TouchableOpacity style={styles.navigation} onPress={() => navigation.navigate('Chats')}>
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              style={[styles.icon, styles.arrow]}
+              size={20}
+            />
+            <Image
+              source={{
+                uri: route.params.image,
+              }}
+              style={styles.image}
+            />
+          </TouchableOpacity>
           <View>
-            <Text style={styles.headerText}>Lukas</Text>
+            <Text style={styles.headerText}>{route.params.name}</Text>
             <Text style={styles.subHeader}>online</Text>
           </View>
         </View>
@@ -60,10 +66,15 @@ const styles = StyleSheet.create({
     // marginVertical: 25,
     // marginTop: 45,
     flexDirection: 'row',
-    gap: 5,
+    gap: 4,
+    marginLeft: 5,
     // justifyContent: 'space-between',
 
     // backgroundColor:'blue'
+  },
+  navigation:{
+    flexDirection:'row',
+    gap:3,
   },
   icon: {
     color: 'white',

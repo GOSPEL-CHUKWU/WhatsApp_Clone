@@ -8,18 +8,19 @@ import {
   faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const InputBox = () => {
   const [newMessage, setNewMessage] = useState('');
 
   const onSend = () => {
+    if (newMessage === '') return;
     console.warn('sending a new message:', newMessage);
-    setNewMessage('')
+    setNewMessage('');
   };
 
-
   return (
-    <View style={styles.container}>
+    <SafeAreaView edges={['bottom']} style={styles.container}>
       <View style={styles.inputContainer}>
         {/* Icon */}
         <FontAwesomeIcon
@@ -64,7 +65,7 @@ const InputBox = () => {
         style={styles.send}
         onPress={onSend}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
   },
   emojis: {
     margin: 12,
+    marginHorizontal: 14,
   },
   input: {
     flex: 1,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
   transferIcons: {
     flexDirection: 'row',
     gap: 25,
-    paddingHorizontal: 15,
+    paddingHorizontal: 16,
     paddingVertical: 11.5,
   },
   transfers: {

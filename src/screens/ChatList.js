@@ -7,7 +7,7 @@ import chats from '../../assets/data/chats.json';
 const ChatListScreen = () => {
   return (
     <View style={styles.container}>
-      <HomepageHeader />
+      {/* <HomepageHeader /> */}
       {/* <ScrollView> */}
       <FlatList
         data={chats}
@@ -22,6 +22,7 @@ const ChatListScreen = () => {
 const styles = StyleSheet.create({
   container: {
     height: '100%',
+    backgroundColor: '#15151c',
   },
 });
 
