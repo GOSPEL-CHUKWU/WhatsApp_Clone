@@ -26,7 +26,7 @@ const MainTabNavigator = () => {
           color: 'gray',
         },
         style: {
-          backgroundColor: '#16161D',
+          backgroundColor: '#15181D',
           elevation: 0,
         },
         indicatorStyle: {

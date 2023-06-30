@@ -39,7 +39,7 @@ const HomepageHeader = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#16161D',
+    backgroundColor: '#15181D',
     // borderBottomColor: "#0e9669 ",
     // borderBottomWidth: 2,
   },

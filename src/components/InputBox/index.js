@@ -12,10 +12,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const InputBox = () => {
   const [newMessage, setNewMessage] = useState('');
+  const [emptyInput, setEmptyInput] = useState(true);
 
   const onSend = () => {
-    if (newMessage === '') return;
+    if (newMessage === '') return
+   setEmptyInput(true);
     console.warn('sending a new message:', newMessage);
+ 
     setNewMessage('');
   };
 
@@ -35,7 +38,10 @@ const InputBox = () => {
           placeholder="Message"
           placeholderTextColor="gray"
           value={newMessage}
-          onChangeText={setNewMessage}
+          onChangeText={e => {
+            e === '' ? setEmptyInput(true) : setEmptyInput(false);
+            setNewMessage(e);
+          }}
           style={styles.input}
         />
 
@@ -57,14 +63,22 @@ const InputBox = () => {
       </View>
 
       {/* Send */}
-      {/* <FontAwesome name='microphone' size={22} color='white' style={styles.record}/> */}
-      <MaterialIcons
-        name="send"
-        size={22}
-        color="white"
-        style={styles.send}
-        onPress={onSend}
-      />
+      {emptyInput ? (
+        <FontAwesome
+          name="microphone"
+          size={22}
+          color="white"
+          style={styles.record}
+        />
+      ) : (
+        <MaterialIcons
+          name="send"
+          size={22}
+          color="white"
+          style={styles.send}
+          onPress={onSend}
+        />
+      )}
     </SafeAreaView>
   );
 };
