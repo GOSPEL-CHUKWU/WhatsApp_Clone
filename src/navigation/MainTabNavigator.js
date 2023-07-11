@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 const Tab = createMaterialTopTabNavigator();
 
-const MainTabNavigator = () => {
+const MainTabNavigator = ({ socket }) => {
   return (
     <Tab.Navigator
       initialRouteName="Chats"
@@ -65,7 +65,6 @@ const MainTabNavigator = () => {
       />
       <Tab.Screen
         name="Chats"
-        component={ChatListScreen}
         options={{
           title: () => (
             <View style={styles.chats}>
@@ -74,7 +73,9 @@ const MainTabNavigator = () => {
             </View>
           ),
         }}
-      />
+      >
+        {props => <ChatListScreen {...props} socket={socket} />}
+      </Tab.Screen>
       <Tab.Screen name="Status" component={StatusScreen} />
       <Tab.Screen name="Calls" component={CallsScreen} />
       {/* <Tab.Screen name='Camera' component={CameraScreen}/> */}

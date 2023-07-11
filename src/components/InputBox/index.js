@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Keyboard } from 'react-native';
 import { AntDesign, MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
@@ -7,18 +7,38 @@ import {
   faMicrophone,
   faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AuthContext } from '../../../utils/AuthContext';
 
-const InputBox = () => {
+const InputBox = ({ socket, name, number }) => {
   const [newMessage, setNewMessage] = useState('');
   const [emptyInput, setEmptyInput] = useState(true);
+  // const [messageDat]
+  const { currentUserNumber, currentUserName } = useContext(AuthContext);
 
   const onSend = () => {
-    if (newMessage === '') return
-   setEmptyInput(true);
-    console.warn('sending a new message:', newMessage);
- 
+    if (newMessage === '') return;
+    setEmptyInput(true);
+    // console.warn('sending a new message:', newMessage);
+
+    socket.emit('input', {
+      text: newMessage,
+      sender: {
+        name: currentUserName ? currentUserName : currentUserName?._j,
+        phoneNumber: currentUserNumber
+          ? currentUserNumber
+          : currentUserNumber?._j,
+      },
+      receiver: {
+        name: name,
+        phoneNumber: number,
+      },
+      createdAt: `${new Date().toISOString()}`,
+      received: true,
+    });
+
+    Keyboard.dismiss();
     setNewMessage('');
   };
 
@@ -34,6 +54,7 @@ const InputBox = () => {
         />
 
         {/* Text Input */}
+
         <TextInput
           placeholder="Message"
           placeholderTextColor="gray"

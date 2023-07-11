@@ -7,13 +7,24 @@ import {
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import MainTabNavigator from '../../navigation/MainTabNavigator';
+import { AuthContext } from '../../../utils/AuthContext';
+import { useContext } from 'react';
 
 const HomepageHeader = () => {
+  const { logout } = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
       <View style={styles.column}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>WhatsApp</Text>
+          <Text
+            style={styles.headerText}
+            onPress={() => {
+              logout();
+            }}
+          >
+            WhatsApp
+          </Text>
           <View style={styles.headerIcons}>
             <FontAwesomeIcon
               icon={faCamera}
@@ -51,7 +62,7 @@ const styles = StyleSheet.create({
   },
   header: {
     marginHorizontal: 18,
-    marginVertical: 20 ,
+    marginVertical: 20,
     marginTop: 45,
     flexDirection: 'row',
     justifyContent: 'space-between',

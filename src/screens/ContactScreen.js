@@ -1,5 +1,13 @@
-import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { useState, useEffect, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Pressable,
+  ScrollView,
+} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faUser,
@@ -8,9 +16,12 @@ import {
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 
-import chats from '../../assets/data/chats.json';
+// import chats from '../../assets/data/chats.json';
 import ContactListItem from '../components/ContactListItem';
 import * as Contacts from 'expo-contacts';
+import { AuthContext } from '../../utils/AuthContext';
+import axios from 'axios';
+import { BASE_URL } from '../../utils/config';
 
 const InviteComponent = ({ contacts }) => {
   return (
@@ -51,16 +62,18 @@ const InviteComponent = ({ contacts }) => {
   );
 };
 
-const ContactScreen = () => {
+const ContactScreen = ({socket}) => {
   const [contacts, setContacts] = useState([]);
+  const navigation = useNavigation();
+  const { currentUser } = useContext(AuthContext);
+  const [chats, setChats] = useState();
+
 
   useEffect(() => {
     (async () => {
       const { status } = await Contacts.requestPermissionsAsync();
       if (status === 'granted') {
-        const { data } = await Contacts.getContactsAsync({
-          fields: [Contacts.PHONE_NUMBERS],
-        });
+        let { data } = await Contacts.getContactsAsync();
         if (data.length > 0) {
           setContacts(data);
         }
@@ -68,10 +81,26 @@ const ContactScreen = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    const getUsers = async ({ id }) => {
+      try {
+        const { data } = await axios.get(`${BASE_URL}/api/v1/getUsers/${id}`);
+        setChats(data);
+      } catch (error) {
+        setIsLoading(false);
+        throw error.response.data;
+      }
+    };
+    getUsers({ id: currentUser });
+  }, [currentUser]);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.newContainer}>
-        <View style={styles.new}>
+        <Pressable
+          onPress={() => navigation.navigate('NewGroup')}
+          style={styles.new}
+        >
           <View style={styles.iconsbg}>
             <FontAwesomeIcon
               icon={faUserGroup}
@@ -80,7 +109,7 @@ const ContactScreen = () => {
             />
           </View>
           <Text style={styles.text}>New group</Text>
-        </View>
+        </Pressable>
         <View style={styles.new}>
           <View style={styles.iconsbg}>
             <FontAwesomeIcon
@@ -91,7 +120,10 @@ const ContactScreen = () => {
           </View>
           <Text style={styles.text}>New contact</Text>
         </View>
-        <View style={styles.new}>
+        <Pressable
+          onPress={() => navigation.navigate('Community')}
+          style={styles.new}
+        >
           <View style={styles.iconsbg}>
             <FontAwesomeIcon
               icon={faUsers}
@@ -100,14 +132,14 @@ const ContactScreen = () => {
             />
           </View>
           <Text style={styles.text}>New community</Text>
-        </View>
+        </Pressable>
       </View>
 
       <Text style={styles.subHeader}>Contacts on Whatsapp</Text>
 
       <FlatList
         data={chats}
-        renderItem={({ item }) => <ContactListItem chat={item} />}
+        renderItem={({ item }) => <ContactListItem chat={item} socket={socket} />}
         scrollEnabled={false}
       />
 

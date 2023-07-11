@@ -1,10 +1,12 @@
+import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import Navigator from './src/navigation'
+import Navigator from './src/navigation';
 // import * as Font from "expo-font";
 // import { useEffect } from "react";
 
 export default function App() {
+
   // useEffect(()=>{
   //   async function loadFont(){
   //     await Font.loadAsync({
@@ -17,7 +19,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Navigator/>
+      <Navigator />
       <StatusBar style="light" />
     </View>
   );

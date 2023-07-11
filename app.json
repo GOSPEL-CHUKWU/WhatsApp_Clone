@@ -11,9 +11,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
+    "plugins": [
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow $(WhatsApp) to access your contacts."
+        }
+      ]
     ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -21,7 +27,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": ["WRITE_CONTACTS"]
     },
     "web": {
       "favicon": "./assets/favicon.png"

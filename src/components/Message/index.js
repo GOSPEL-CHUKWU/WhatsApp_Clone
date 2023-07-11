@@ -1,12 +1,22 @@
 import { View, Text, StyleSheet } from 'react-native';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-dayjs.extend(relativeTime);
+// import relativeTime from 'dayjs/plugin/relativeTime';
+
+import { useContext } from 'react';
+import { AuthContext } from '../../../utils/AuthContext';
+// dayjs.extend(relativeTime);
+import moment from 'moment';
 
 const Message = ({ message }) => {
+  const { currentUserNumber } = useContext(AuthContext);
+  // console.log(message.user.phoneNumber);
   const isMyMessage = () => {
-    return message.user.id === 'u1';
+    const number = currentUserNumber
+      ? currentUserNumber
+      : currentUserNumber?._j;
+    return message.sender.phoneNumber === number;
   };
+  // console.log(message.sender.phoneNumber, currentUserNumber);
 
   return (
     <View
@@ -21,7 +31,8 @@ const Message = ({ message }) => {
       <Text style={styles.message}>{message.text}</Text>
       <Text style={styles.time}>
         {/* {dayjs(message.createdAt).fromNow(true)} */}
-        13:07
+        {moment(message.createdAt).format('HH:mm')}
+        {/* 13:07 */}
       </Text>
     </View>
   );
@@ -59,8 +70,8 @@ const styles = StyleSheet.create({
   },
   time: {
     alignSelf: 'flex-end',
-    marginTop:-2,
-    marginBottom:-3,
+    marginTop: -2,
+    marginBottom: -3,
     fontSize: 12,
     color: '#babfbd',
   },
